@@ -196,6 +196,25 @@ class Fastly {
   }
 
   /**
+   * List all directors for a particular service and version.
+   * @return {Promise} The response object representing the completion or failure.
+   */
+  readDirectors(version = '') {
+    return this.request.get(`/service/${this.service_id}/version/${version}/director`);
+  }
+
+  /**
+   * Update the director for a particular service and version.
+   * @param version {String} The current version of a service.
+   * @param name {String} The name of the director.
+   * @param data {Object} The data to be sent as the request body.
+   * @return {Promise} The response object representing the completion or failure.
+   */
+  updateDirector(version = '', name = '', data = {}) {
+    return this.request.put(`/service/${this.service_id}/version/${version}/director/${encodeURIComponent(name)}`, data);
+  }
+
+  /**
    * Create a snippet for a particular service and version.
    * @param version {String} The current version of a service.
    * @param data {Object} The data to be sent as the request body.
