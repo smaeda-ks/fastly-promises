@@ -103,7 +103,7 @@ class Fastly {
   readServices() {
     return this.request.get(`/service`);
   }
-  
+
   /**
    * List the versions for a particular service.
    * @return {Promise} The response object representing the completion or failure.
@@ -174,6 +174,25 @@ class Fastly {
    */
   updateBackend(version = '', name = '', data = {}) {
     return this.request.put(`/service/${this.service_id}/version/${version}/backend/${encodeURIComponent(name)}`, data);
+  }
+
+  /**
+   * List all pools for a particular service and version.
+   * @return {Promise} The response object representing the completion or failure.
+   */
+  readPools(version = '') {
+    return this.request.get(`/service/${this.service_id}/version/${version}/pool`);
+  }
+
+  /**
+   * Update the pool for a particular service and version.
+   * @param version {String} The current version of a service.
+   * @param name {String} The name of the pool.
+   * @param data {Object} The data to be sent as the request body.
+   * @return {Promise} The response object representing the completion or failure.
+   */
+  updatePool(version = '', name = '', data = {}) {
+    return this.request.put(`/service/${this.service_id}/version/${version}/pool/${encodeURIComponent(name)}`, data);
   }
 
   /**
