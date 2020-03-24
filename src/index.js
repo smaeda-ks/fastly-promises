@@ -113,6 +113,14 @@ class Fastly {
   }
 
   /**
+   * Get the active version for a particular service.
+   * @return {Promise} The response object representing the completion or failure.
+   */
+  getActiveVersion() {
+    return this.request.get(`/service/${this.service_id}/version/active`);
+  }
+
+  /**
    * Clone the current configuration into a new version.
    * @param version {String} The version to be cloned.
    * @return {Promise} The response object representing the completion or failure.
