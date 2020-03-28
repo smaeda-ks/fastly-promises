@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/philippschulte/fastly-promises#readme",
   "engines": {
-    "node": ">=7.6.0"
+    "node": ">=12.x"
   },
   "devDependencies": {
     "codecov.io": "0.1.6",
